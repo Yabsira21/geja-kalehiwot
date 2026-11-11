@@ -1,8 +1,10 @@
 import "server-only";
 
+import { connection } from "next/server";
 import { prisma } from "@/lib/db";
 
 export async function getUpcomingHomeEvents() {
+  await connection();
   try {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
